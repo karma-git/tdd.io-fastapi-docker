@@ -4,11 +4,13 @@ version: '3.8'
 services:
   web:
     container_name: tdd.io-fastapi
-    image: demo-po-alpine
+    image: tdd.io-fastapi
     build:
       context: ./
       args:
         - POETRY_VERSION=1.1.12
+    entrypoint: /usr/local/bin/uvicorn
+    command: app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     volumes:
