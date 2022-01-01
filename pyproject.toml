@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "fastapi-tdd-docker"
+version = "0.1.0"
+description = "Test-Driven Development with FastAPI and Docker - Course by Michael Herman"
+authors = ["Andrew Horbach <andrewhorbach@gmail.com>"]
+license = "WTFPL"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "0.70.1"
+uvicorn = "0.16.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
