@@ -18,6 +18,7 @@ services:
     environment:
       - ENVIRONMENT=dev
       - TESTING=0
+      - DATABASE_URL=postgres://postgres:postgres@web-db:5432/web_dev
     depends_on:
       web-db:
         condition: service_healthy
