@@ -20,10 +20,51 @@ cd project
 uvicorn app.main:app --reload
 ```
 
+# Setup
+
 Send request:
 ```shell
-curl -X 'GET' \
->   'http://127.0.0.1:8000/ping' \
->   -H 'accept: application/json'
-{"ping":"pong!"}%
+❯ http -b http://127.0.0.1:8000/ping
+{
+    "ping": "pong!"
+}
+```
+# Config
+
+```shell
+❯ http -b http://127.0.0.1:8000/ping
+{
+    "environment": "dev",
+    "ping": "pong!",
+    "testing": false
+}
+```
+
+> NOTE: of course you should specify your env vars in the same terminal where you run uvicorn
+
+```shell
+export ENVIRONMENT=prod
+export TESTING=1
+```
+
+```shell
+❯ http -b http://127.0.0.1:8000/ping
+{
+    "environment": "prod",
+    "ping": "pong!",
+    "testing": true
+}
+```
+
+> That happens when you set the TESTING environment variable to foo? Try this out. Then update the variable to 0.
+
+```shell
+export TESTING=foo
+# ---
+❯ http -b http://127.0.0.1:8000/ping
+Internal Server Error
+# ---
+pydantic.error_wrappers.ValidationError: 1 validation error for Settings
+testing
+  value could not be parsed to a boolean (type=type_error.bool)
 ```
