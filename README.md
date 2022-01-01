@@ -19,38 +19,26 @@ ref: https://testdriven.io/courses/tdd-fastapi/
 - [Get started with Docker Compose](https://docs.docker.com/compose/gettingstarted/)
 - [Docker Best Practices for Python Developers](https://testdriven.io/blog/docker-best-practices/)
 **FastAPI**
-- First Steps ](https://fastapi.tiangolo.com/tutorial/first-steps/) from the official FastAPI tutorial
+- [First Steps](https://fastapi.tiangolo.com/tutorial/first-steps/) from the official FastAPI tutorial
 </details>
 
 <details>
 <summary>What tools and technologies are used in this course?</summary>
 
-**Core**
-1. Python
-2. FastAPI
-3. Docker
-4. Postgres
-5. Tortoise ORM
-6. Uvicorn
-7. Gunicorn
-8. Swagger/OpenAPI
+| № |Core         |Testing and Linting|Services       |
+|---|-------------|-------------------|---------------|
+|1  |Python       |pytest             |GitHub Actions |
+|2  |FastAPI      |Coverage.py        |GitHub Packages|
+|3  |Docker       |Flake8             |Heroku         |
+|4  |Postgres     |Black              |               |
+|5  |Tortoise ORM |isort              |               |
+|6  |Uvicorn      |HTTPie             |               |
+|7  |Gunicorn     |                   |               |
+|8|Swagger/OpenAPI|                   |               |
 
-**Testing and Linting**
-1. pytest
-2. Coverage.py
-3. Flake8
-4. Black
-5. isort
-6. HTTPie
-
-**Services**
-1. GitHub Actions
-2. GitHub Packages
-3. Heroku
+> ** and [Python-Poetry](https://gist.github.com/karma-git/2690afc72cb10197440fb7f3c5384d74) in my case.
 
 </details>
-
-
 
 # Content
 ## Part 1 - Foundation and Concepts
