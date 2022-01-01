@@ -1,0 +1,18 @@
+---
+version: '3.8'
+
+services:
+  web:
+    container_name: tdd.io-fastapi
+    image: demo-po-alpine
+    build:
+      context: ./
+      args:
+        - POETRY_VERSION=1.1.12
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./project:/usr/src/app
+    environment:
+      - ENVIRONMENT=dev
+      - TESTING=0

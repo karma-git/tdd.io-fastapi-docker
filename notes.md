@@ -22,38 +22,10 @@ uvicorn app.main:app --reload
 
 # Setup
 
-Send request:
 ```shell
-❯ http -b http://127.0.0.1:8000/ping
-{
-    "ping": "pong!"
-}
-```
-# Config
-
-```shell
-❯ http -b http://127.0.0.1:8000/ping
-{
-    "environment": "dev",
-    "ping": "pong!",
-    "testing": false
-}
-```
-
-> NOTE: of course you should specify your env vars in the same terminal where you run uvicorn
-
-```shell
-export ENVIRONMENT=prod
-export TESTING=1
-```
-
-```shell
-❯ http -b http://127.0.0.1:8000/ping
-{
-    "environment": "prod",
-    "ping": "pong!",
-    "testing": true
-}
+echo "alias doc='docker compose'" >> ~/.zshrc
+source ~/.zshrc
+doc up
 ```
 
 > That happens when you set the TESTING environment variable to foo? Try this out. Then update the variable to 0.
@@ -68,3 +40,5 @@ pydantic.error_wrappers.ValidationError: 1 validation error for Settings
 testing
   value could not be parsed to a boolean (type=type_error.bool)
 ```
+
+Feel free to use any http client which you want.

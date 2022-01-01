@@ -1,0 +1,26 @@
+{
+	"info": {
+		"_postman_id": "3d67b496-2b37-43eb-a6fe-3b09dda689fd",
+		"name": "fastapi-tdd.io-docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/ping",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
