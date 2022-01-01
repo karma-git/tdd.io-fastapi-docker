@@ -15,7 +15,7 @@ register_tortoise(
     app,
     db_url=os.environ.get("DATABASE_URL"),
     modules={"models": ["app.models.tortoise"]},
-    generate_schemas=True,
+    generate_schemas=False,  # updated
     add_exception_handlers=True,
 )
 
