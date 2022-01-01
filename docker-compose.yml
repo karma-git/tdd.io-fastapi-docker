@@ -18,3 +18,22 @@ services:
     environment:
       - ENVIRONMENT=dev
       - TESTING=0
+    depends_on:
+      web-db:
+        condition: service_healthy
+  web-db:
+    container_name: tdd.io-postgres
+    image: tdd.io-postgres
+    build:
+      context: ./project/db
+      dockerfile: Dockerfile
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 2s
+      timeout: 2s
+      retries: 30

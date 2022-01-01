@@ -5,3 +5,5 @@ curl:
     	| jq
 httpie:
 	http -b http://127.0.0.1:8000/ping
+postgres:
+	docker-compose exec web-db psql -U postgres
