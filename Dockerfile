@@ -33,16 +33,17 @@ RUN apk add --no-cache py3-psycopg2~=2.8.6 \
     make~=4.3 \
   && pip install --no-cache-dir poetry==${POETRY_VERSION}
 
-# copy project files and package info
+# copy dependencies info
 COPY ./poetry.lock ./
 COPY ./pyproject.toml ./
-COPY ./project ./
 
 # install python dependecies, delete build deps
 RUN poetry config virtualenvs.create false \
   && poetry install \
-  && apk del .build-deps \
-  && chmod +x ./entrypoint.sh
+  && apk del .build-deps
+
+# copy project files
+COPY ./project ./
 
 USER 10001
 

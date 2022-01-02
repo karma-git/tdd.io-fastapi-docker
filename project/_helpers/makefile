@@ -11,3 +11,5 @@ postgres-makemigrations:
 	docker-compose exec web aerich init -t app.db.TORTOISE_ORM
 postgres-migrate:
 	docker-compose exec web aerich init-db
+pytest:
+	docker-compose exec web python -m pytest

@@ -24,7 +24,7 @@ docker-compose exec web aerich init-db
 docker-compose exec web-db psql -U postgres web_dev -c "\dt"
             List of relations
  Schema |    Name     | Type  |  Owner   
---------+-------------+-------+----------
+--------+-------------+-------+----------w
  public | aerich      | table | postgres
  public | textsummary | table | postgres
 (2 rows)
