@@ -29,8 +29,14 @@ services:
     build:
       context: ./project/db
       dockerfile: Dockerfile
-    expose:
-      - 5432
+#   works similar to k8s - exposing service only in docker network
+#   so if u wanna access pg trough local machine we should use port-forwarding
+#    expose:
+#      - 5432
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
