@@ -10,3 +10,9 @@ doc down -v
 # Refactor
 
 > APIRouter == Blueprint from flask or django application
+
+# migrations
+
+```shell
+docker-compose exec web aerich upgrade
+```
