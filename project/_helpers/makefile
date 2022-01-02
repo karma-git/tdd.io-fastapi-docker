@@ -17,3 +17,5 @@ pytest:
 	docker-compose exec web python -m pytest
 pg_init:
 	 docker-compose exec web aerich upgrade
+coverage:
+	docker-compose exec web python -m pytest --cov="." --cov-report html
