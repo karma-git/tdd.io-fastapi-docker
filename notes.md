@@ -7,25 +7,20 @@ up/down
 doc up -d --build
 doc down -v
 ```
-# Migrations
+# TDD
 
-django `python manage.py makemigrations` equivalent.
 ```shell
-docker-compose exec web aerich init -t app.db.TORTOISE_ORM
-```
-django `python manage.py migrate` equivalent.
-```shell
-docker-compose exec web aerich init-db
+❯ make pytest
+docker-compose exec web python -m pytest
+================================ test session starts ================================
+platform linux -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
+rootdir: /usr/src/app
+plugins: anyio-3.4.0
+collected 1 item                                                                    
+
+tests/test_ping.py .                                                          [100%]
+
+================================= 1 passed in 0.30s =================================
 ```
 
-# Result
-```shell
-❯ make postgres        
-docker-compose exec web-db psql -U postgres web_dev -c "\dt"
-            List of relations
- Schema |    Name     | Type  |  Owner   
---------+-------------+-------+----------w
- public | aerich      | table | postgres
- public | textsummary | table | postgres
-(2 rows)
-```
+[Given-When-Then](https://testdriven.io/courses/tdd-fastapi/pytest-setup/)
