@@ -1,6 +1,10 @@
-# if a class is used, it must begin with Test
-class TestFoo:
+# project/tests/test_ping.py
 
-    # test functions must begin with test_
-    def test_bar(self):
-        assert "foo" != "bar"
+
+from app import main
+
+
+def test_ping(test_app):
+    response = test_app.get("/ping")
+    assert response.status_code == 200
+    assert response.json() == {"environment": "dev", "ping": "pong!", "testing": True}
