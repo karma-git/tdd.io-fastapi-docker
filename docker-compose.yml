@@ -26,6 +26,7 @@ services:
   web-db:
     container_name: tdd.io-postgres
     image: tdd.io-postgres
+    user: postgres
     build:
       context: ./project/db
       dockerfile: Dockerfile

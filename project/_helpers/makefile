@@ -7,6 +7,7 @@ httpie:
 	http -b http://127.0.0.1:8000/ping
 	http --json POST http://localhost:8000/summaries/ url=http://testdriven.io
 	http --json GET http://localhost:8000/summaries/1/
+	http --json GET http://localhost:8000/summaries/
 postgres:
 	docker-compose exec web-db psql -U postgres web_dev -c "\dt"
 #postgres-makemigrations:
