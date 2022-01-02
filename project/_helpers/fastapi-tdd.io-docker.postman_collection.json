@@ -21,6 +21,103 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "/summaries/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/summaries/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"summaries",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/summaries/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"https://github.com\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/summaries/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"summaries",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/summaries/{id}/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/summaries/{{summary_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"summaries",
+						"{{summary_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": " http://localhost:8000",
+			"type": "default"
+		},
+		{
+			"key": "summary_id",
+			"value": "1",
+			"type": "default"
 		}
 	]
 }
