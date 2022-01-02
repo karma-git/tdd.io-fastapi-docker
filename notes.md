@@ -7,12 +7,10 @@ up/down
 doc up -d --build
 doc down -v
 ```
-# Refactor
+# RESTful Routes
 
-> APIRouter == Blueprint from flask or django application
-
-# migrations
-
-```shell
-docker-compose exec web aerich upgrade
-```
+|Endpoint|	HTTP Method| 	CRUD Method |	Result|
+|--------|-------------|--------------|---------|
+|/summaries|	GET| 	READ        |	get all summaries|
+|/summaries/:id|	GET| 	READ        | 	get a single summary |
+|/summaries|	POST| 	CREATE      | 	add a summary |
