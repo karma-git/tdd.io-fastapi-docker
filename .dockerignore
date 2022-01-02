@@ -2,3 +2,5 @@
 docker-compose.yml
 notes.md
 README.md
+.coverage
+./project/htmlcov

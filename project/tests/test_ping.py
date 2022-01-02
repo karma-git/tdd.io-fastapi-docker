@@ -1,7 +1,7 @@
 # project/tests/test_ping.py
 
 
-from app import main
+from app import main  # noqa: F401
 
 
 def test_ping(test_app):

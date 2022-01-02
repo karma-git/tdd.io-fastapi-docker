@@ -17,3 +17,18 @@ pytest:
 	docker-compose exec web python -m pytest
 pg_init:
 	 docker-compose exec web aerich upgrade
+coverage:
+	docker-compose exec web python -m pytest --cov="." --cov-report html
+lint-check:
+	# flake8
+	docker-compose exec web flake8 . || true
+	# black
+	docker-compose exec web black . --check
+	docker-compose exec web black . --diff
+	# isort
+	docker-compose exec web isort . --check-only
+	docker-compose exec web isort . --diff
+lint-solve:
+	docker-compose exec web flake8 .
+	docker-compose exec web black .
+	docker-compose exec web isort .
