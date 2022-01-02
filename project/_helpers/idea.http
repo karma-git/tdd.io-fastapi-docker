@@ -3,12 +3,12 @@ GET {{base_url}}/ping
 
 ###
 
-# @name /summaries
+# @name /summaries/
 GET {{base_url}}/summaries/
 
 ###
 
-# @name /summaries
+# @name /summaries/
 POST {{base_url}}/summaries/
 Content-Type: application/json
 
