@@ -1,2 +1,22 @@
-### /ping
-GET http://0.0.0.0:8000/ping
+# @name /ping
+GET {{base_url}}/ping
+
+###
+
+# @name /summaries
+GET {{base_url}}/summaries/
+
+###
+
+# @name /summaries
+POST {{base_url}}/summaries/
+Content-Type: application/json
+
+{
+    "url": "{{url}}"
+}
+
+###
+
+# @name /summaries/{id}/
+GET {{base_url}}/summaries/{{summary_id}}/

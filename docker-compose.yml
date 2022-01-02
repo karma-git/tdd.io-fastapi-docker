@@ -24,7 +24,7 @@ services:
         condition: service_healthy
   web-prod:
     container_name: tdd.io-fastapi-prod
-    image: tdd.io-fastapi-prod
+    image: "registry.heroku.com/mighty-brook-75156/web"
     build:
       context: ./
       dockerfile: Dockerfile.prod

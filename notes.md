@@ -15,62 +15,32 @@ doc down -v
 |/summaries/:id|	GET| 	READ        | 	get a single summary |
 |/summaries|	POST| 	CREATE      | 	add a summary |
 
-# pytest
-## run specific test
+# Heroku
+
 ```shell
-❯ doc exec web python -m pytest -k ping
-======================================================= test session starts ========================================================
-platform linux -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
-rootdir: /usr/src/app
-plugins: anyio-3.4.0
-collected 5 items / 4 deselected / 1 selected                                                                                      
+# auth
+export HEROKU_API_KEY=ea21d17e-...
+heroku auth:token > /dev/null 2>&1
+heroku container:login
 
-tests/test_ping.py .                                                                                                         [100%]
-
-================================================= 1 passed, 4 deselected in 0.24s ==================================================
+# create app
+❯ heroku addons:create heroku-postgresql:hobby-dev --app sleepy-thicket-77414
+Creating heroku-postgresql:hobby-dev on ⬢ sleepy-thicket-77414... !
+# enable db
+❯ heroku addons:create heroku-postgresql:hobby-dev --app mighty-brook-75156
+Creating heroku-postgresql:hobby-dev on ⬢ mighty-brook-75156... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-opaque-19454 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+# build and push image:
+❯ docker push registry.heroku.com/mighty-brook-75156/web
+# release
+❯ heroku container:release web --app mighty-brook-75156
+Releasing images web to mighty-brook-75156... done
+# makemigrations
+❯ heroku run aerich upgrade --app mighty-brook-75156
+Running aerich upgrade on ⬢ mighty-brook-75156... up, run.8213 (Free)
+Success upgrade 0_20220101160411_init.sql
 ```
-## run w/o warnings
-```shell
-❯ doc exec web python -m pytest -p no:warnings       
-======================================================= test session starts ========================================================
-platform linux -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
-rootdir: /usr/src/app
-plugins: anyio-3.4.0
-collected 5 items                                                                                                                  
-
-tests/test_ping.py .                                                                                                         [ 20%]
-tests/test_summaries.py ....                                                                                                 [100%]
-
-======================================================== 5 passed in 0.51s =========================================================
-```
-## only last failed
-```shell
-❯ doc exec web python -m pytest --lf          
-======================================================= test session starts ========================================================
-platform linux -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
-rootdir: /usr/src/app
-plugins: anyio-3.4.0
-collected 5 items                                                                                                                  
-run-last-failure: no previously failed tests, not deselecting items.
-
-tests/test_ping.py .                                                                                                         [ 20%]
-tests/test_summaries.py ....                                                                                                 [100%]
-
-======================================================== 5 passed in 0.39s =========================================================
-```
-## run only the tests with names that match the string expression
-```shell
-❯ doc exec web python -m pytest -k "summary and not test_read_summary"    
-======================================================= test session starts ========================================================
-platform linux -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0
-rootdir: /usr/src/app
-plugins: anyio-3.4.0
-collected 5 items / 4 deselected / 1 selected                                                                                      
-
-tests/test_summaries.py .                                                                                                    [100%]
-
-================================================= 1 passed, 4 deselected in 0.24s ==================================================
-```
-...
-
-ref: https://testdriven.io/courses/tdd-fastapi/restful-routes/#H-6-pytest-commands

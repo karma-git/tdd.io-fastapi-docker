@@ -1,21 +1,18 @@
+#base_url := $(call args, "http://127.0.0.1:8000")
+base_url := "http://127.0.0.1:8000"
+
 curl:
 	curl -sX 'GET' \
-    	'http://127.0.0.1:8000/ping' \
+    	$(base_url)/ping \
     	-H 'accept: application/json' \
     	| jq
 httpie:
-	http -b http://127.0.0.1:8000/ping
-	http --json POST http://localhost:8000/summaries/ url=http://testdriven.io
-	http --json GET http://localhost:8000/summaries/1/
-	http --json GET http://localhost:8000/summaries/
+	http -b $(base_url)/ping
+	http --json POST $(base_url)/summaries/ url=http://testdriven.io
+	http --json GET $(base_url)/summaries/1/
+	http --json GET $(base_url)/summaries/
 postgres:
 	docker-compose exec web-db psql -U postgres web_dev -c "\dt"
-#postgres-makemigrations:
-#	docker-compose exec web aerich init -t app.db.TORTOISE_ORM
-#postgres-migrate:
-#	docker-compose exec web aerich init-db
-#postgres-generate-schema:
-#	docker-compose exec web python app/db.py
 pytest:
 	docker-compose exec web python -m pytest
 pg_init:
