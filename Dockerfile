@@ -22,6 +22,10 @@ RUN addgroup --gid 10001 app \
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# copy dependencies info
+COPY ./poetry.lock ./
+COPY ./pyproject.toml ./
+
 # setup poetry and psycopg2
 RUN apk add --no-cache py3-psycopg2~=2.8.6 \
   && apk add --no-cache --virtual .build-deps \
@@ -31,14 +35,8 @@ RUN apk add --no-cache py3-psycopg2~=2.8.6 \
     libffi-dev~=3.3 \
     musl-dev~=1.2.2 \
     make~=4.3 \
-  && pip install --no-cache-dir poetry==${POETRY_VERSION}
-
-# copy dependencies info
-COPY ./poetry.lock ./
-COPY ./pyproject.toml ./
-
-# install python dependecies, delete build deps
-RUN poetry config virtualenvs.create false \
+  && pip install --no-cache-dir poetry==${POETRY_VERSION} \
+  && poetry config virtualenvs.create false \
   && poetry install \
   && apk del .build-deps
 
