@@ -64,3 +64,7 @@ doc push web-prod  # doesn't work
 docker push docker.pkg.github.com/karma-git/fastapi-tdd.io-docker/summarizer:latest
 docker push registry.gitlab.com/web352/fastapi/fastapi-tdd.io-docker:latest
 ```
+
+## CI - Actions
+
+> secrets.GITHUB_ = error
