@@ -1,4 +1,4 @@
-![Continuous Integration and Delivery](https://github.com/kfrma-git/fastapi-tdd.io-docker/workflows/Continuous%20Integration%20and%20Delivery/badge.svg?branch=chore/p2-c11)
+![Continuous Integration and Delivery](https://github.com/kfrma-git/fastapi-tdd.io-docker/workflows/Continuous%20Integration%20and%20Delivery/badge.svg?branch=master)
 # Overview
 Test-Driven Development with FastAPI and Docker course (v1.2.2)
 
