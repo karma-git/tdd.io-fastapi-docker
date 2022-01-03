@@ -1,13 +1,15 @@
 swagger UI ref: http://127.0.0.1:8000/docs
 
-# Setup
+# App
+
+## Setup
 
 up/down
 ```shell
 doc up -d --build
 doc down -v
 ```
-# RESTful Routes
+## RESTful Routes
 
 |Endpoint|	HTTP Method| 	CRUD Method |	Result|
 |--------|-------------|--------------|---------|
@@ -15,7 +17,9 @@ doc down -v
 |/summaries/:id|	GET| 	READ        | 	get a single summary |
 |/summaries|	POST| 	CREATE      | 	add a summary |
 
-# Heroku
+# Deploy
+
+## Heroku
 
 ```shell
 # auth
@@ -44,3 +48,23 @@ Releasing images web to mighty-brook-75156... done
 Running aerich upgrade on ⬢ mighty-brook-75156... up, run.8213 (Free)
 Success upgrade 0_20220101160411_init.sql
 ```
+
+## Artifacts (docker image)
+
+Create GH PAC.
+
+```shell
+# login
+docker login registry.gitlab.com -u karma
+docker login docker.pkg.github.com -u karma-git
+# build
+doc --build
+# publish
+doc push web-prod  # doesn't work
+docker push docker.pkg.github.com/karma-git/fastapi-tdd.io-docker/summarizer:latest
+docker push registry.gitlab.com/web352/fastapi/fastapi-tdd.io-docker:latest
+```
+
+## CI - Actions
+
+> secrets.GITHUB_ = error
