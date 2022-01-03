@@ -32,6 +32,7 @@ jobs:
       - name: Build image
         run: |
           docker build \
+            --build-arg POETRY_VERSION=1.1.12 \
             --cache-from ${{ env.IMAGE }}:latest \
             --tag ${{ env.IMAGE }}:latest \
             --file ./Dockerfile.prod \
@@ -59,6 +60,7 @@ jobs:
       - name: Build image
         run: |
           docker build \
+            --build-arg POETRY_VERSION=1.1.12 \
             --cache-from ${{ env.IMAGE }}:latest \
             --tag ${{ env.IMAGE }}:latest \
             --file ./Dockerfile \
