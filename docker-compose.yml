@@ -24,7 +24,10 @@ services:
         condition: service_healthy
   web-prod:
     container_name: tdd.io-fastapi-prod
-    image: "registry.heroku.com/mighty-brook-75156/web"
+    # !NOTE: I embrace the risk with the latest tag here
+#    image: "registry.heroku.com/mighty-brook-75156/web:latest"
+#    image: "docker.pkg.github.com/karma-git/fastapi-tdd.io-docker/summarizer:latest"  # GitHub
+    image: "registry.gitlab.com/web352/fastapi/fastapi-tdd.io-docker:latest"  # GitLab
     build:
       context: ./
       dockerfile: Dockerfile.prod
