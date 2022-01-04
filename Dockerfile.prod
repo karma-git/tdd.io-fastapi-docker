@@ -37,6 +37,7 @@ RUN apk add --no-cache py3-psycopg2~=2.8.6 \
     libffi-dev~=3.3 \
     musl-dev~=1.2.2 \
     make~=4.3 \
+  && pip install --upgrade pip \
   && pip install --no-cache-dir poetry==${POETRY_VERSION} \
   && poetry config virtualenvs.create false \
   && poetry install --no-dev \
