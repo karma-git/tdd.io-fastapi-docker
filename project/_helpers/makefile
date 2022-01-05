@@ -1,5 +1,6 @@
 #base_url := $(call args, "http://127.0.0.1:8000")
-base_url := "http://127.0.0.1:8000"
+# base_url := "http://127.0.0.1:8000"
+base_url := "https://mighty-brook-75156.herokuapp.com"
 
 curl:
 	curl -sX 'GET' \
