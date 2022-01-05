@@ -12,6 +12,8 @@ httpie:
 	http --json POST $(base_url)/summaries/ url=http://testdriven.io
 	http --json GET $(base_url)/summaries/1/
 	http --json GET $(base_url)/summaries/
+	http --json PUT  $(base_url)/summaries/2/ url=https://testdriven.io summary=super
+	http DELETE $(base_url)/summaries/2/
 postgres:
 	docker-compose exec web-db psql -U postgres web_dev -c "\dt"
 pytest:
@@ -30,6 +32,6 @@ lint-check:
 	docker-compose exec web isort . --check-only
 	docker-compose exec web isort . --diff
 lint-solve:
-	docker-compose exec web flake8 .
 	docker-compose exec web black .
+	docker-compose exec web flake8 .
 	docker-compose exec web isort .
