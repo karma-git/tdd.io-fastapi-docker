@@ -17,7 +17,8 @@ httpie:
 postgres:
 	docker-compose exec web-db psql -U postgres web_dev -c "\dt"
 pytest:
-	docker-compose exec web python -m pytest
+	#docker-compose exec web python -m pytest
+	docker-compose exec web pytest -k "unit" -n auto
 pg_init:
 	 docker-compose exec web aerich upgrade
 coverage:
