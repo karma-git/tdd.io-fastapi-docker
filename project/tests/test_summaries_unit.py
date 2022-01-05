@@ -6,7 +6,7 @@ from datetime import datetime
 
 import pytest
 
-from app.api import crud, summaries
+from app.api import crud
 
 
 def test_create_summary(test_app, monkeypatch):
@@ -18,7 +18,10 @@ def test_create_summary(test_app, monkeypatch):
 
     monkeypatch.setattr(crud, "post", mock_post)
 
-    response = test_app.post("/summaries/", data=json.dumps(test_request_payload),)
+    response = test_app.post(
+        "/summaries/",
+        data=json.dumps(test_request_payload),
+    )
 
     assert response.status_code == 201
     assert response.json() == test_response_payload
@@ -84,7 +87,7 @@ def test_read_all_summaries(test_app, monkeypatch):
             "url": "https://testdrivenn.io",
             "summary": "summary",
             "created_at": datetime.utcnow().isoformat(),
-        }
+        },
     ]
 
     async def mock_get_all():
@@ -143,7 +146,10 @@ def test_update_summary(test_app, monkeypatch):
 
     monkeypatch.setattr(crud, "put", mock_put)
 
-    response = test_app.put("/summaries/1/", data=json.dumps(test_request_payload),)
+    response = test_app.put(
+        "/summaries/1/",
+        data=json.dumps(test_request_payload),
+    )
     assert response.status_code == 200
     assert response.json() == test_response_payload
 
@@ -201,7 +207,9 @@ def test_update_summary(test_app, monkeypatch):
         ],
     ],
 )
-def test_update_summary_invalid(test_app, monkeypatch, summary_id, payload, status_code, detail):
+def test_update_summary_invalid(
+    test_app, monkeypatch, summary_id, payload, status_code, detail
+):
     async def mock_put(id, payload):
         return None
 
@@ -212,66 +220,9 @@ def test_update_summary_invalid(test_app, monkeypatch, summary_id, payload, stat
     assert response.json()["detail"] == detail
 
 
-@pytest.mark.parametrize(
-    "summary_id, payload, status_code, detail",
-    [
-        [
-            999,
-            {"url": "https://foo.bar", "summary": "updated!"},
-            404,
-            "Summary not found",
-        ],
-        [
-            0,
-            {"url": "https://foo.bar", "summary": "updated!"},
-            422,
-            [
-                {
-                    "loc": ["path", "id"],
-                    "msg": "ensure this value is greater than 0",
-                    "type": "value_error.number.not_gt",
-                    "ctx": {"limit_value": 0},
-                }
-            ],
-        ],
-        [
-            1,
-            {},
-            422,
-            [
-                {
-                    "loc": ["body", "url"],
-                    "msg": "field required",
-                    "type": "value_error.missing",
-                },
-                {
-                    "loc": ["body", "summary"],
-                    "msg": "field required",
-                    "type": "value_error.missing",
-                },
-            ],
-        ],
-        [
-            1,
-            {"url": "https://foo.bar"},
-            422,
-            [
-                {
-                    "loc": ["body", "summary"],
-                    "msg": "field required",
-                    "type": "value_error.missing",
-                }
-            ],
-        ],
-    ],
-)
-def test_update_summary_invalid(test_app, monkeypatch, summary_id, payload, status_code, detail):
-    pass
-
-
 def test_update_summary_invalid_url(test_app):
     response = test_app.put(
-        f"/summaries/1/",
+        "/summaries/1/",
         data=json.dumps({"url": "invalid://url", "summary": "updated!"}),
     )
     assert response.status_code == 422
