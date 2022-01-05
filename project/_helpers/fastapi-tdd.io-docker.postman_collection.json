@@ -86,6 +86,54 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "/summaries/{id}/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"http://example.com\",\n    \"summary\": \"super\"\n}\n"
+				},
+				"url": {
+					"raw": "{{base_url}}/summaries/{{summary_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"summaries",
+						"{{summary_id}}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/summaries/{id}/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/summaries/{{summary_id}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"summaries",
+						"{{summary_id}}",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [

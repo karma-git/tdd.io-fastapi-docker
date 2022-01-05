@@ -20,3 +20,19 @@ Content-Type: application/json
 
 # @name /summaries/{id}/
 GET {{base_url}}/summaries/{{summary_id}}/
+
+###
+
+# @name /summaries/{id}/
+PUT {{base_url}}/summaries/{{summary_id}}/
+Content-Type: application/json
+
+{
+    "url": "{{url}}",
+    "summary": "super"
+}
+
+###
+
+# @name /summaries/{id}/
+DELETE {{base_url}}/summaries/{{summary_id}}/
