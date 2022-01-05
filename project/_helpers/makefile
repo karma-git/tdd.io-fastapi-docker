@@ -30,6 +30,6 @@ lint-check:
 	docker-compose exec web isort . --check-only
 	docker-compose exec web isort . --diff
 lint-solve:
-	docker-compose exec web flake8 .
 	docker-compose exec web black .
+	docker-compose exec web flake8 .
 	docker-compose exec web isort .
