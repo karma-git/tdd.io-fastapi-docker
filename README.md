@@ -69,5 +69,3 @@ ref: https://testdriven.io/courses/tdd-fastapi/
 6. Run tests in parallel with pytest-xdist
 7. Document a RESTful API with Swagger/OpenAPI
 8. Run a background process outside the request/response flow
-
-# 
