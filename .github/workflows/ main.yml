@@ -76,7 +76,7 @@ jobs:
             -p 5003:8765 \
             ${{ env.IMAGE }}:latest
       - name: Pytest
-        run: docker exec fastapi-tdd python -m pytest .
+        run: docker exec fastapi-tdd pytest -k "unit" -n auto .
       - name: Flake8
         run: docker exec fastapi-tdd python -m flake8 .
       - name: Black
